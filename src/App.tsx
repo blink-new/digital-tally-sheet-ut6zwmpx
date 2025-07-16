@@ -365,10 +365,10 @@ function App() {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    {/* Side-by-side layout for both counters */}
-                    <div className="grid grid-cols-2 gap-4">
+                    {/* Stacked layout for both counters */}
+                    <div className="space-y-4">
                       {/* Counter 1 - Getrunken */}
-                      <div className="border-r border-slate-200 pr-3">
+                      <div className="border-b border-slate-200 pb-4">
                         <div className="text-center mb-3">
                           <div className="text-sm font-medium text-slate-600 mb-2">Getrunken</div>
                           <TallyMarks count={counter.count1} color={counter.color} />
@@ -379,40 +379,40 @@ function App() {
                         
                         {/* Counter 1 Control Buttons */}
                         <div className="space-y-2">
-                          <div className="flex gap-1">
+                          <div className="flex gap-2">
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count1', -1)}
                               disabled={counter.count1 === 0}
-                              className="flex-1 h-9 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform"
+                              className="flex-1 h-10 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform"
                             >
-                              <Minus className="w-3 h-3" />
+                              <Minus className="w-4 h-4" />
                             </Button>
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count1', 1)}
-                              className={`flex-1 h-9 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform`}
+                              className={`flex-1 h-10 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform`}
                             >
-                              <Plus className="w-3 h-3" />
+                              <Plus className="w-4 h-4" />
                             </Button>
                           </div>
                           <Button
                             variant="outline"
                             size="sm"
                             onClick={() => resetCounter(counter.id, 'count1')}
-                            className="w-full h-8 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-xs"
+                            className="w-full h-9 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-sm"
                             title="Reset Counter 1 to 0"
                           >
-                            <RotateCcw className="w-3 h-3 mr-1" />
+                            <RotateCcw className="w-4 h-4 mr-1" />
                             Reset
                           </Button>
                         </div>
                       </div>
 
                       {/* Counter 2 - Bezahlt */}
-                      <div className="pl-3">
+                      <div>
                         <div className="text-center mb-3">
                           <div className="text-sm font-medium text-slate-600 mb-2">Bezahlt</div>
                           <TallyMarks count={counter.count2} color="#ef4444" />
@@ -423,33 +423,33 @@ function App() {
                         
                         {/* Counter 2 Control Buttons */}
                         <div className="space-y-2">
-                          <div className="flex gap-1">
+                          <div className="flex gap-2">
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count2', -1)}
                               disabled={counter.count2 === 0}
-                              className="flex-1 h-9 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform"
+                              className="flex-1 h-10 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform"
                             >
-                              <Minus className="w-3 h-3" />
+                              <Minus className="w-4 h-4" />
                             </Button>
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count2', 1)}
-                              className={`flex-1 h-9 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform`}
+                              className={`flex-1 h-10 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform`}
                             >
-                              <Plus className="w-3 h-3" />
+                              <Plus className="w-4 h-4" />
                             </Button>
                           </div>
                           <Button
                             variant="outline"
                             size="sm"
                             onClick={() => resetCounter(counter.id, 'count2')}
-                            className="w-full h-8 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-xs"
+                            className="w-full h-9 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-sm"
                             title="Reset Counter 2 to 0"
                           >
-                            <RotateCcw className="w-3 h-3 mr-1" />
+                            <RotateCcw className="w-4 h-4 mr-1" />
                             Reset
                           </Button>
                         </div>
