@@ -334,7 +334,7 @@ function App() {
             <p className="text-sm text-slate-500">Create your first counter to get started</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {counters.map((counter) => {
               const colorClasses = getColorClasses(counter.color)
               return (
