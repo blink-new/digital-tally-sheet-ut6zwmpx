@@ -148,10 +148,13 @@ function App() {
 
   // Handle sharing
   const handleShare = async () => {
+    // Force a page reload to ensure we get the latest URL
+    const currentUrl = `${window.location.origin}${window.location.pathname}${window.location.search}`
+    
     const shareData = {
       title: 'Digital Tally Sheet App',
       text: 'Check out this digital tally counter app!',
-      url: window.location.href,
+      url: currentUrl,
     }
 
     if (navigator.share) {
@@ -162,7 +165,7 @@ function App() {
       }
     } else {
       // Fallback for browsers that don't support Web Share API
-      navigator.clipboard.writeText(window.location.href)
+      navigator.clipboard.writeText(currentUrl)
       alert('Link copied to clipboard!')
     }
   }
@@ -365,10 +368,10 @@ function App() {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    {/* Stacked layout for mobile, side-by-side for larger screens */}
-                    <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-4">
+                    {/* Always side-by-side layout for mobile and desktop */}
+                    <div className="grid grid-cols-2 gap-3">
                       {/* Counter 1 - Getrunken */}
-                      <div className="sm:border-r sm:border-slate-200 sm:pr-3">
+                      <div className="border-r border-slate-200 pr-2">
                         <div className="text-center mb-3">
                           <div className="text-xs font-medium text-slate-600 mb-2">Getrunken</div>
                           <TallyMarks count={counter.count1} color={counter.color} />
@@ -379,13 +382,13 @@ function App() {
                         
                         {/* Counter 1 Control Buttons */}
                         <div className="space-y-2">
-                          <div className="flex gap-2">
+                          <div className="flex gap-1">
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count1', -1)}
                               disabled={counter.count1 === 0}
-                              className="flex-1 h-9 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform text-xs"
+                              className="flex-1 h-8 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform text-xs px-1"
                             >
                               <Minus className="w-3 h-3" />
                             </Button>
@@ -393,7 +396,7 @@ function App() {
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count1', 1)}
-                              className={`flex-1 h-9 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform text-xs`}
+                              className={`flex-1 h-8 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform text-xs px-1`}
                             >
                               <Plus className="w-3 h-3" />
                             </Button>
@@ -402,7 +405,7 @@ function App() {
                             variant="outline"
                             size="sm"
                             onClick={() => resetCounter(counter.id, 'count1')}
-                            className="w-full h-8 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-xs"
+                            className="w-full h-7 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-xs px-1"
                             title="Reset Counter 1 to 0"
                           >
                             <RotateCcw className="w-3 h-3 mr-1" />
@@ -412,7 +415,7 @@ function App() {
                       </div>
 
                       {/* Counter 2 - Bezahlt */}
-                      <div className="border-t border-slate-200 pt-4 sm:border-t-0 sm:pt-0 sm:pl-1">
+                      <div className="pl-2">
                         <div className="text-center mb-3">
                           <div className="text-xs font-medium text-slate-600 mb-2">Bezahlt</div>
                           <TallyMarks count={counter.count2} color="#ef4444" />
@@ -423,13 +426,13 @@ function App() {
                         
                         {/* Counter 2 Control Buttons */}
                         <div className="space-y-2">
-                          <div className="flex gap-2">
+                          <div className="flex gap-1">
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count2', -1)}
                               disabled={counter.count2 === 0}
-                              className="flex-1 h-9 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform text-xs"
+                              className="flex-1 h-8 hover:bg-red-50 hover:border-red-300 touch-manipulation active:scale-95 transition-transform text-xs px-1"
                             >
                               <Minus className="w-3 h-3" />
                             </Button>
@@ -437,7 +440,7 @@ function App() {
                               variant="outline"
                               size="sm"
                               onClick={() => updateCounter(counter.id, 'count2', 1)}
-                              className={`flex-1 h-9 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform text-xs`}
+                              className={`flex-1 h-8 hover:bg-green-50 hover:border-green-300 touch-manipulation active:scale-95 transition-transform text-xs px-1`}
                             >
                               <Plus className="w-3 h-3" />
                             </Button>
@@ -446,7 +449,7 @@ function App() {
                             variant="outline"
                             size="sm"
                             onClick={() => resetCounter(counter.id, 'count2')}
-                            className="w-full h-8 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-xs"
+                            className="w-full h-7 hover:bg-slate-100 touch-manipulation active:scale-95 transition-transform text-xs px-1"
                             title="Reset Counter 2 to 0"
                           >
                             <RotateCcw className="w-3 h-3 mr-1" />
